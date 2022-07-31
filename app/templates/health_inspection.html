@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Enter Restaurant Data</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.reviews.label }}<br>
+            {{ form.reviews(rows=5, cols=50) }}<br>
+            {% for error in form.reviews.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.categories.label }}<br>
+            {{ form.categories(size=15) }}<br>
+            {% for error in form.categories.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p> {{ form.avg_rating.label }}<br>
+            {{ form.avg_rating(min = 0, max = 5, step=0.1, oninput="this.nextElementSibling.value = this.value") }}
+            <output></output>
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

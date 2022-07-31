@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+      <title>Health Inspection Predictor</title>
+    </head>
+    <body>
+        <div>
+            <a href="{{ url_for('health_inspection') }}">Health Inspection</a>
+        <hr>
+
+        {% block content %}{% endblock %}
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+        {% for message in messages %}
+        <div><p><b>{{ message }}</b></p></div>
+        {% endfor %}
+
+        {% endif %}
+        {% endwith %}
+    </body>
+</html>
